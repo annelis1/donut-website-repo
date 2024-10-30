@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sample Deployment</title>
+    <style>
+      body {
+        color: #ffffff;
+        background: linear-gradient(
+          to bottom right,
+          #0188cc,
+          #005f99
+        ); /* Gradient background */
+        font-family: "Arial", sans-serif;
+        font-size: 16px;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        position: relative; /* To position shapes absolutely within */
+        overflow: hidden; /* Prevents scrollbars from appearing */
+      }
+
+      .header {
+        background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent header */
+        width: 100%;
+        padding: 10px 0;
+        text-align: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+
+      .header h1 {
+        margin: 0;
+        font-size: 2.5em;
+        color: #ffcc00; /* Gold color for the header */
+      }
+
+      .container {
+        text-align: center;
+        background-color: rgba(
+          0,
+          0,
+          0,
+          0.8
+        ); /* Darker semi-transparent background */
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        margin-top: 80px; /* Space below header */
+        z-index: 1; /* Ensure container is above shapes */
+      }
+
+      h2 {
+        font-size: 2em;
+        font-weight: normal;
+        margin-bottom: 1em;
+      }
+
+      p {
+        margin: 1em 0;
+        font-size: 1.2em;
+      }
+
+      a {
+        color: #ffcc00;
+        text-decoration: none;
+        font-weight: bold;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .footer {
+        position: absolute;
+        bottom: 20px;
+        text-align: center;
+        font-size: 0.9em;
+        color: #ffffff;
+      }
+
+      /* Heart shape */
+      .heart {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background-color: #ff0066;
+        clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+        animation: heartbeat 1s infinite alternate;
+      }
+
+      /* Random shapes */
+      .shape {
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background-color: #ffcc00;
+        border-radius: 50%; /* Circle */
+        opacity: 0.8;
+        animation: float 3s infinite ease-in-out;
+      }
+
+      /* Keyframe animations */
+      @keyframes heartbeat {
+        0% {
+          transform: scale(1);
+        }
+        100% {
+          transform: scale(1.2);
+        }
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 600px) {
+        .header h1,
+        .container h2 {
+          font-size: 1.8em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>My Awesome Application</h1>
+    </div>
+    <div class="container">
+      <h2>Congratulations!</h2>
+      <p>
+        This application was deployed using <strong>AWS CodeDeploy</strong>.
+      </p>
+      <p>
+        For next steps, read the
+        <a href="http://aws.amazon.com/documentation/codedeploy" target="_blank"
+          >AWS CodeDeploy Documentation</a
+        >.
+      </p>
+    </div>
+    <div class="footer">
+      <p>&copy; 2024 My Company. All Rights Reserved.</p>
+    </div>
+
+    <script>
+      // Function to create hearts and shapes
+      function createRandomElements() {
+        for (let i = 0; i < 10; i++) {
+          createHeart();
+          createShape();
+        }
+      }
+
+      function createHeart() {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        // Random position
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = Math.random() * 100 + "vh";
+        document.body.appendChild(heart);
+      }
+
+      function createShape() {
+        const shape = document.createElement("div");
+        shape.classList.add("shape");
+        // Random position
+        shape.style.left = Math.random() * 100 + "vw";
+        shape.style.top = Math.random() * 100 + "vh";
+        document.body.appendChild(shape);
+      }
+
+      // Create elements on page load
+      window.onload = createRandomElements;
+    </script>
+  </body>
+</html>
